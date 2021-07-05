@@ -1,6 +1,7 @@
 import numpy as np
 from typing import Tuple
 
+
 class ImageScrambler():
 
     def __init__(self, shape: Tuple, block_shape: Tuple) -> None:
@@ -34,7 +35,7 @@ class ImageScrambler():
 
 
 if __name__ == '__main__':
-    s = ImageScrambler(shape=(9, 9), block_shape=(3, 3))
-    image = np.arange(81).reshape([9, 9, 1])
-    print(image.reshape([9, 9]))
-    print(s.scramble(image).reshape([9, 9]))
+    s = ImageScrambler(shape=(28, 28), block_shape=(7, 4))
+    image = np.arange(28*28).reshape([28, 28, 1])
+    print(image.reshape([28, 28]))
+    print(s.scramble(image).reshape([28, 28]))
