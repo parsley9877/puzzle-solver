@@ -1,5 +1,5 @@
 import numpy as np
-from typing import Tuple
+from typing import Tuple, Iterable
 
 
 class ImageScrambler():
@@ -9,7 +9,7 @@ class ImageScrambler():
         self.shape = shape
         self.block_shape = block_shape
 
-    def scramble(self, image: np.ndarray) -> np.ndarray:
+    def _scramble(self, image: np.ndarray) -> np.ndarray:
         assert image.ndim == 3
         horizontal_num = self.shape[1] // self.block_shape[1]
         vertical_num = self.shape[0] // self.block_shape[0]
@@ -34,6 +34,17 @@ class ImageScrambler():
         col_patch_idx = col_patch * self.block_shape[1]
         return int(row_patch_idx), int(col_patch_idx)
 
+    def scramble(self, image: np.ndarray, num: int) -> Iterable:
+        scrambled_images = []
+        for _ in range(num):
+            scrambled_images.append(self._scramble(image))
+        return scrambled_images
+
+    def set_shape(self, new_shape):
+        self.shape = new_shape
+
+    def set_block_shape(self, new_block_shape):
+        self.block_shape = new_block_shape
 
 if __name__ == '__main__':
     s = ImageScrambler(shape=(28, 28), block_shape=(7, 4))

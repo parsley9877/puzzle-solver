@@ -56,7 +56,7 @@ n = 76
 segment_shape = (2, 2, 3)
 sampled_image = get_one_sample(cifar)
 scrambler_object = ImageScrambler(shape=(32, 32), block_shape=segment_shape)
-scrambled_image = scrambler_object.scramble(sampled_image)
+scrambled_image = scrambler_object.scramble(sampled_image, 1)[0]
 write_summary(path='./cifar10-results', sampled_image=sampled_image, scrambled_image=scrambled_image, segment_shape=segment_shape)
 
 if not os.path.exists('./mnist-results'):
@@ -66,5 +66,5 @@ n = 32
 segment_shape = (7, 7, 1)
 sampled_image = get_one_sample(mnist)
 scrambler_object = ImageScrambler(shape=(28, 28), block_shape=segment_shape)
-scrambled_image = scrambler_object.scramble(sampled_image)
+scrambled_image = scrambler_object.scramble(sampled_image, 1)[0]
 write_summary(path='./mnist-results', sampled_image=sampled_image, scrambled_image=scrambled_image, segment_shape=segment_shape)
