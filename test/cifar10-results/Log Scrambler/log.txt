@@ -1,2 +1,0 @@
-Original Image Shape: (32, 32, 3)
-Segments Shape: (2, 2, 3)
